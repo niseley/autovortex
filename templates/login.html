@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <section class = "flex justify-between items-center w-full h-screen">
+        <div class="w-1/2 flex justify-center items-center">
+            <form action="/login" method="Post" class = "w-[430px]"> 
+
+                <button class = "bg-blue-800 text-white py-6 px-8 rounded-lg text-1xl mb-4">
+                    <p>
+                        Futur
+                    </p>
+                </button>
+
+                <h1 class = "font-bold text-2xl">Connectez vous </h1>
+
+                <p class = "text-md">Welcome to the future - let's connect account</p>
+
+                <div class = "border-b-2 m-5"></div>
+
+                <div class = "flex flex-col">
+
+                    <!-- bloc "pseudo" -->
+                    
+                    <label>Utilisateur</label>
+                    <input type = "text" name="input_pseudo" class = "p-2 w-96 h-11 block border-2 border-blue-300 bg-blue-200" placeholder = "Cyber-user">
+                    
+
+                    
+                    
+                    <label>Mot de passe</label>
+                    <input type = "password" name="input_mdp" class = "p-2 w-96 h-11 block border-2 border-blue-300 bg-blue-200 " placeholder = "P@ssword">
+
+                    
+
+
+                    <!-- bouton se connecter -->
+                    <button type="submit" class="p-2 w-96 h-11 block mt-4  transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 bg-gradient-to-r from-teal-400 to-blue-500 hover:from-pink-500 hover:to-orange-500p-3 rounded-lg ">Connect your account</button>
+                    <main class=" bg-white rounded-lg mx-auto shadow-2X1 w-4/5">
+                        {% if erreur %}
+                        <p class = "text-red-800 font-bold my-4">{{erreur}}</p>
+                        {% endif %}
+                        {% block contents %}
+                        {% endblock %}
+
+                        <p class = "text-center mt-4 underline" >Vous n'avez pas encore de compte ?  <a href = "/register">sign up</a></p>
+
+                    </main>
+                </div>
+
+            </form>
+         
+        </div>
+        <div class = "w-1/2 h-full ">
+            <img src = "https://m.media-amazon.com/images/M/MV5BZWYyNDRkNzAtOTI0Ny00NDQwLWE5M2YtMWFiZDdmMDc4MmQ0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" class = "h-full w-full object-cover">
+        </div>
+       
+    </section>
+            
+      
+</body>
+</html>

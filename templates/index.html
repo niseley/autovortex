@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<section class="mb-8 bg-white ">
+    <h2 class="text-3xl text-center my-6 underline font-bold text-black">Motos cross en vedettes</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        {% for game in games %}
+        {% if game.type == "Motos cross" %}
+            <div class="bg-white p-4 rounded-lg mb-4 mt-4 my-4 mx-4 shadow-black shadow-2xl">
+                <img src="{{ game.Image }}" alt="{{ game.Titre }}" class="w-full rounded-lg mb-4 text-black">
+                <h3 class="text-2xl font-bold underline text-black">{{ game.Titre }}</h3>
+                <p class="mt-2 text-black">{{ game.Description }}</p>
+                <a href="{{ game.Link }}">
+                        <button class=" bg-black text-white py-2 px-4 rounded-lg mt-4">Buy Now</button>
+                </a>
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+<section  class=" bg-white ">
+    <h2 class="text-3xl mx-4 font-bold text-black">Upcoming Events</h2>
+    <div class="mt-6">
+        <div class="bg-white text-black p-4 rounded-lg  shadow-lg mb-4">
+            <h3 class="text-2xl font-bold">Event 1</h3>
+            <p class="mt-2">Details about Event 1.</p>
+        </div>
+        <div class="bg-white text-black p-4 rounded-lg  shadow-lg mb-4">
+            <h3 class="text-2xl font-bold">Event 2</h3>
+            <p class="mt-2">Details about Event 2.</p>
+        </div>
+        <div class="bg-white text-black p-4 rounded-lg  shadow-lg mb-4">
+            <h3 class="text-2xl font-bold">Event 3</h3>
+            <p class="mt-2">Details about Event 3.</p>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="flex flex-col md:flex-row items-start justify-between bg-white">
+    <!-- Section gauche : Profil utilisateur -->
+    <div class="w-full md:w-1/2 p-4">
+        <img src="{{ utilisateur.avatar }}" class="my-10 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-black duration-300 border-8 border-black rounded-full w-64 h-64 mx-auto object-cover">
+        <div>
+            <p class="text-black text-center text-3xl my-6 font-bold">{{ utilisateur.pseudo }}</p>
+            <p class="text-black my-6 text-center italic">Age: {{ utilisateur.age }}</p>
+            <p class="text-black my-6 text-center italic">Nationalité: {{ utilisateur.nationalite }}</p>
+        </div>
+        <div class="flex justify-center items-center space-x-4 mt-4">
+            <a href="/profil/edit" class="text-black border shadow-lg text-2xl py-2 px-4 rounded-lg">Editer</a>
+            <form action="/profil/delete" method="POST">
+                <button type="submit" class="text-2xl text-red-500 py-2 px-4 border shadow-lg my-4 rounded-lg">
+                    Suprimer le compte
+                </button>
+                
+            </form>
+            <li ><a href="/logout" class="text-2xl text-red-500 py-2 px-4 border shadow-lg my-4 rounded-lg">Se déconnecter</a></li>
+        </div>
+    </div>
+
+    <!-- Section droite : Vidéo -->
+    <div class="w-full md:w-1/2 p-0">
+        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+            <source src="static\20250618-01(3).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+
+{% endblock %}
+       
+
+
+     

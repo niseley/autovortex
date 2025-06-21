@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Style pour le menu hamburger */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .hamburger div {
+        background-color: #000; /* Couleur noire */
+        height: 3px;
+        border-radius: 2px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Animation pour le menu ouvert */
+    .hamburger.open div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.open div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .custom-select select,
+    .custom-select select option {
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+
+    .hamburger.open div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+        /* Style pour le menu déroulant */
+            .menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 18px 20px;
+        z-index: 1000;
+        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.15), 0 1.5px 8px 0 #0002;
+        border: 1.5px solid #e5e7eb;
+        min-width: 220px;
+    }
+
+    .menu.open {
+        display: block;
+        animation: menuFadeIn 0.3s;
+    }
+
+    @keyframes menuFadeIn {
+        from { opacity: 0; transform: translateY(-10px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
+
+    .menu a {
+        display: block;
+        color: #111;
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .menu a:hover {
+        background: #f3f4f6;
+        color: #000;
+        box-shadow: 0 2px 8px #0001;
+    }
+
+    .custom-select {
+        position: relative;
+        display: block;
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .custom-select select,
+    .custom-select select option {
+        background-color: #fff !important;
+        color: #111 !important;
+    }
+
+
+    .w-
+
+    .custom-select select {
+        border: 1.5px solid #e5e7eb;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 40px 10px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 8px #0001;
+    }
+
+    .custom-select select:focus {
+        outline: none;
+        border-color: #111;
+        box-shadow: 0 0 0 2px #0002;
+    }
+
+    .custom-select::after {
+    /* content: "▼";
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%) rotate(0deg);
+    color: #111;
+    pointer-events: none;
+    font-size: 18px;
+    transition: transform 0.3s; */
+}
+
+    /* Effet de rotation quand le select est focus */
+    .custom-select select:focus + .custom-select::after,
+    .custom-select select:active + .custom-select::after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+        .custom-select:hover select {
+            border-color: #ff00ff;
+        }
+    
+        .neon-text {
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+        }
+        .neon-button {
+            background-color: #ff00ff;
+            box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+        }
+        .neon-button:hover {
+            background-color: #ff00ff;
+            box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+        }
+        button{
+
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+
+<body class="bg-white text-white">
+    <header class="border border-black bg-white p-6 relative">
+        <div class="flex items-center justify-between">
+            
+
+            <!-- Barre de recherche -->
+            <form action="/search" method="GET" class="flex items-center">
+                <div class="relative flex items-center">
+                    <!-- Icône de loupe (image) -->
+                    <img src="{{ url_for('static', filename='png-clipart-computer-icons-magnifying-glass-magnifier-magnifying-glass-cdr-snare.png') }}"
+                    alt="Search Icon" 
+                    class="w-6 h-6 mr-2 opacity-80">
+
+                    <!-- Barre de recherche -->
+                    <input type="text" name="search" placeholder="Search" 
+                        class="bg-transparent text-black  px-4 py-2 rounded-lg w-64 focus:outline-none ">
+                </div>
+               
+            </form>
+
+            <!-- Titre (H1) centré -->
+            <div class="absolute inset-x-0 text-center pointer-events-none">
+            <a href="/" class="text-4xl font-bold text-black tracking-wide pointer-events-auto">
+                AutoVortex 
+            </a>
+            </div>
+
+            
+            <div class="relative flex items-center space-x-4">
+                <!-- Lien vers le profil -->
+                {% if not utilisateur %}
+                <a href="/login">
+                    <img class="w-7 h-7 object-cover" src="static/1250689.png" alt="Profile">
+                </a>
+               
+            {% else %}
+                <a href="/profil">
+                    <img class="w-7 h-7 object-cover" src="static/1250689.png" alt="Profile">
+                </a>
+                
+            {% endif %}
+                
+            
+                <!-- Menu hamburger -->
+                <div>
+                    <div class="hamburger" onclick="toggleMenu()">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div id="menu" class="menu">
+                        
+                        <form action="/filter" method="GET" class="custom-select my-6 ">
+                        <select name="type" 
+                            onchange="this.form.submit()"
+                            class="bg-black text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-white">
+                            <option value="" disabled selected>Type</option>
+                            <option value = "Motos cross">Motos cross</option>
+                            <option value="Motos">Motos</option>
+                            <option value="Voitures">Voitures</option>
+                        </select>
+                    </form>
+                    <form action="/filter" method="GET" class="custom-select ">
+                        <select name="platform" 
+                            onchange="this.form.submit()"
+                            class="bg-black text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-white">
+                            <option value="" disabled selected>Marque</option>
+                            <option value="Yamaha">Yamaha</option>
+                            <option value="Apollo">Apollo</option>
+                            <option value="Kawasaki">Kawasaki</option>
+                            
+                        </select>
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+    {% if utilisateur and utilisateur.role == "admin" %}
+        <p class = "text-center bg-black text-white mx-auto my-4 p-2 ">
+            <a href = "/admin_games" class = >Admin</a>
+        </p>
+    {% endif %}
+    
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="border border-black bg-white p-6 text-center">
+        <p class="text-black">© 2025 AutoVortex . All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const menu = document.getElementById('menu');
+            hamburger.classList.toggle('open');
+            menu.classList.toggle('open');
+        }
+    </script>
+</body>
+    
+    
+</html>

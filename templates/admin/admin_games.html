@@ -1,0 +1,45 @@
+{% extends "admin/base_admin.html" %}
+
+
+{% block content %}
+<style>
+.neon-text {
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+}
+</style>
+<table class = "w-5/6 mx-auto">
+    <thead>
+        <tr class = "text-black font-bold text-2xl">
+            <td>Title</td>
+            <td>Description</td>
+            <td>picture</td>
+
+        </tr>
+        
+        
+    </thead>
+    <tbody>
+        {% for games in jeux %}
+        <tr class="[&>*]:border [&>*]:border-black">
+            <td class = "text-black font-bold text-1xl">
+               {{games.Titre}}
+            </td>
+            <td class = "w-1/2 text-black">
+                {{games.Description}}
+            </td>
+            <td>
+                <img src="{{games.Image}}" alt="image" class = "w-48 h-48 object-contain mx-4">
+            </td>
+            <td>
+                <a href="/modifier/{{games._id}}" class="text-black text-2xl my-4  underline items-center space-x-4 px-4 rounded-lg">Edit</a>
+                <a href="/look/{{games._id}}" class=" contain underline text-2xl my-4 text-blue-500 items-center space-x-4 px-4 rounded-lg">Look</a>
+                <a href="/delete/{{games._id}}" class=" text-2xl my-4 underline text-red-500 font-bold items-center space-x-4 px-4 rounded-lg">delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

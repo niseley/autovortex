@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .neon-text {
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+        }
+        .neon-button {
+            background-color: #ff00ff;
+            box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+        }
+        .neon-button:hover {
+            background-color: #ff00ff;
+            box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+        }
+        button{
+
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+    <header class="bg-gradient-to-r from-purple-500 to-pink-500 p-6">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <!-- Titre -->
+            <h1 class="text-4xl font-bold neon-text mb-4 md:mb-0 tracking-wide mx-4">
+                Gaming&nbsp;World
+            </h1>
+            <!-- Conteneur des éléments alignés -->
+            <div class="flex items-center space-x-6">
+                <!-- Select -->
+                <form action="/filter" method="GET" class="flex items-center">
+                    <select name="type" class="h-8 text-black px-2 mx-8 rounded" onchange="this.form.submit()">
+                        <option value="action">Action</option>
+                        <option value="adventure">Adventure</option>
+                    </select>
+                </form>
+    
+                <!-- Barre de recherche -->
+                <form action="/search" method="GET" class="flex items-center">
+                    <input type="text" name="search" placeholder="Search" class="mx-6 text-black px-2 py-1 rounded">
+                    <button type="submit" class=" mx-4 neon-text text-2xl text-white py-2 px-4 rounded-lg">
+                        Search
+                    </button>
+                </form>
+    
+                <!-- Bouton Home -->
+                <a href="/" class="neon-text text-2xl text-white px-4 py-2 rounded-lg">
+                    Home
+                </a>
+            
+        </div>
+        <ul class = "flex justify-end red-800 w-96 ">
+            {% if not utilisateur %}
+            <li ><a href="/register" class=" neon-text text-2xl my-4 text-white flex items-center space-x-4 px-4 rounded-lg">Sign&nbsp;up</a></li>
+            <li ><a href="/login" class="neon-text text-2xl my-4 text-white flex items-center space-x-4 px-4 rounded-lg">Sign&nbsp;in</a></li>
+            {% else %}
+            <div class="flex items-center space-x-4" >
+                <li ><a href="/logout" class="neon-text text-2xl text-white px-4 rounded-lg">Logout</a></li>
+                <a href ="/profil">
+                    <img class="  transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 border-4 border-black rounded-full w-14 h-14  object-cover" src="{{utilisateur.avatar}}"></a>
+            </div>
+            {% endif %}
+            
+        </ul>
+        
+    </header>
+    
+    <main> 
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="bg-gradient-to-r from-pink-500 to-purple-500 p-6 text-center">
+        <p class="text-white">© 2025 Gaming World. All rights reserved.</p>
+    </footer>
+</body>
+</html>

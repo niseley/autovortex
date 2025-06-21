@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<img src="static\png-clipart-computer-keyboard-backspace-arrow-computer-icons-arrow-cdr-angle.png"
+                    alt="Return Icon" 
+                    class="w-6 h-6 mr-2 opacity-80"
+                    href="/admin_games">
+<h1 class="text-xl font-bold text-black text-center mt-2">Modifier un personnage</h1>
+<form action="/modifier/{{jeux._id}}" method="POST" enctype="multipart/form-data" class="bg-red-100 rounded-lg p-4 w-1/2 mx-auto my-5">
+    <div>
+        <label>Nom du personnage</label>
+        <input type="text" name="input_nom" class="border text-black border-black" value="{{jeux.Titre}}">
+    </div>
+    <div>
+        <label>Description</label>
+        <textarea name="input_description" rows="4" cols="50" class="border text-black border-black">{{jeux.Description}}</textarea>
+    </div>
+    <div>
+        <label>Image</label>
+        <img class="w-32 h-32 object-cover  mx-auto" src="{{jeux.Image}}">
+        <input type="file" name="input_fichier" class="border border-black" accept="image/*">
+    </div>
+    <div>
+        <label>Lien</label>
+        <textarea name="input_lien" rows="4" cols="50" class="border text-black border-black">{{jeux.Link}}</textarea>
+    </div>
+    <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-full">Valider</button>
+</form>
+{% endblock %}

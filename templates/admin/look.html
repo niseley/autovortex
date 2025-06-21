@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class ="bg-white w-1/2 p-4 rounded-lg mb-4 mt-4 my-4 mx-auto shadow-black shadow-2xl">
+    <h1 class ="text-center mb-2 text-2xl font-bold underline text-black">{{jeux.Titre}}</h1>
+    <img src="{{jeux.Image}}" alt="image" class=" mb-2 w-48 h- mx-auto my-4">
+    <p class="mb-2 text-black">{{jeux.Description}}</p>
+</div>
+
+
+{% endblock %}
